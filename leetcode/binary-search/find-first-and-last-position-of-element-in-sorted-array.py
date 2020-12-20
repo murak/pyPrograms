@@ -5,9 +5,17 @@ class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         if nums == None or len(nums) == 0:
             return [-1,-1]
-        posLeft = -1
-        posRight = -1
-        i,j = 0,len(nums)-1
+        posLeft = getLeftPosition(nums, target)
+
+        if posLeft == -1:
+            return [-1, -1]
+                
+		posRight = getRightPosition(nums, target)
+        
+        return [posLeft, posRight]
+
+    def getLeftPosition(self, nums: List[int], target: int):
+    	posLeft, i, j = -1, 0, len(nums)-1
         while i<=j:
             m = (i+j)//2
             if nums[m] == target:
@@ -20,11 +28,10 @@ class Solution:
                 i = m+1
             else:
                 j = m-1
+        return posLeft
 
-        if posLeft == -1:
-            return [-1, -1]
-                
-        i,j = 0,len(nums)-1
+    def getRightPosition(self, nums: List[int], target: int):
+    	posRight,i,j = -1,0,len(nums)-1
         while i<=j:
             m = (i+j)//2
             if nums[m] == target:
@@ -37,5 +44,8 @@ class Solution:
                 i = m+1
             else:
                 j = m-1
-        
-        return [posLeft, posRight]
+        return posRight
+
+
+
+
