@@ -2,6 +2,21 @@
 #Link: https://leetcode.com/problems/search-insert-position/submissions/
 
 class Solution:
+
+    def efficientSearchInsert(self, nums, target):
+        if nums is None:
+            return 0
+        i, j = 0, len(nums) - 1
+        while i <= j:
+            m = (i + j) // 2
+            if target == nums[m]:
+                return m
+            elif target > nums[m]:
+                i = m+1 
+            else:
+                j = m-1
+        return i
+
     def searchInsert(self, nums, target):
         if nums is None:
             return 0
@@ -34,26 +49,10 @@ def main():
     for target in range(12):
         print 'for ', nums, 'insert ', target, ' at position = ', s.searchInsert(nums, target)
 
+    print '\n#### Efficient Algorithm'
 
-    target = 1
-    
-    target = 3
-    print 'insert position = ', s.searchInsert(nums, target)
-
-    target = 5
-    print 'insert position = ', s.searchInsert(nums, target)
-
-    target = 7
-    print 'insert position = ', s.searchInsert(nums, target)
-
-    target = 9
-    print 'insert position = ', s.searchInsert(nums, target)
-
-    target = 11
-    print 'insert position = ', s.searchInsert(nums, target)
-
-    target = 2
-    print 'insert position = ', s.searchInsert(nums, target)
+    for target in range(12):
+        print 'for ', nums, 'insert ', target, ' at position = ', s.efficientSearchInsert(nums, target)
 
 
 if __name__ == '__main__':
