@@ -5,12 +5,12 @@ class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         if nums == None or len(nums) == 0:
             return [-1,-1]
-        posLeft = getLeftPosition(nums, target)
+        posLeft = self.getLeftPosition(nums, target)
 
         if posLeft == -1:
             return [-1, -1]
                 
-		posRight = getRightPosition(nums, target)
+		posRight = self.getRightPosition(nums, target)
         
         return [posLeft, posRight]
 
