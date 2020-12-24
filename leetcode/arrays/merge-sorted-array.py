@@ -16,7 +16,7 @@ class Solution:
                 nums1[i] = nums2[y]
                 y -= 1
             i -= 1
-        
+
         while x >= 0:
             nums1[i] = nums1[x]
             i -= 1
